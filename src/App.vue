@@ -2,25 +2,22 @@
   <main>
     <header>
       <img src="./assets/pinia-logo.svg" alt="">
-      <h1>Pinia Task Managemment</h1>
+      <h1>Floor Plan Managemment</h1>
     </header>
 
-      <!-- TASKS -->
-      <div class="task-list">
-        <div v-for="task in taskStore.tasks">
-          <TaskDetails :task="task" :key="task.id" />
-        </div>
-      </div>
+      <MapPage />
      
   </main>
 </template>
 
 <script>
 import TaskDetails from './components/TaskDetails.vue'
+import MapPage from './components/MapPage.vue';
 import { useTaskStore } from './stores/TaskStore';
   export default {
     components: {
-      TaskDetails
+      TaskDetails,
+      MapPage
     },
     setup () {
       const taskStore = useTaskStore()
@@ -29,4 +26,4 @@ import { useTaskStore } from './stores/TaskStore';
       }
     }
   }
-</script>./store/TaskStore
+</script>./store/TaskStore./components/MapPage.vue

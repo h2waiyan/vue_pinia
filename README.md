@@ -27,3 +27,16 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+<!-- 1. Locate
+https://api.mazemap.com/js/v2.0.114/docs/#ex-basic-map DONE
+
+2. Markers
+https://api.mazemap.com/js/v2.0.114/docs/#ex-mazemarker-popups DONE
+https://docs.mapbox.com/mapbox-gl-js/example/add-a-marker/
+https://docs.mapbox.com/mapbox-gl-js/example/animate-marker/
+https://docs.mapbox.com/mapbox-gl-js/example/popup-on-click/
+https://docs.mapbox.com/mapbox-gl-js/example/popup-on-hover/
+
+3. https://api.mazemap.com/js/v2.0.114/docs/#ex-excel-room-list -->
