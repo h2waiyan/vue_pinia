@@ -2,11 +2,13 @@
   <main>
     <header>
       <img src="./assets/pinia-logo.svg" alt="">
-      <h1>Floor Plan Managemment</h1>
+      <h1>Pinia Task Management</h1>
     </header>
 
-      <MapPage />
-     
+    <div v-for="task in taskStore.tasks">
+      <TaskDetails :task="task" />
+    </div>
+    
   </main>
 </template>
 
