@@ -16,13 +16,15 @@ export default {
 
             var myMap = new Mazemap.Map({
                 container: 'map',
-                campuses: 50,
-                center: { lng: -78.4985453236003, lat: 38.030998758211865 },
-                zoom: 19.7,
+                campuses: 49,
+                center: { lng: 17.629996594328058, lat: 59.857310651927755 },
+                zoom: 18,
+                zLevel: 1,
+                zLevelControl: false,
                 scrollZoom: true,
                 doubleClickZoom: false,
                 touchZoomRotate: false,
-                zLevelControl: false
+                interactive: true
             });
 
             var globalMarkerFeatures = [];
@@ -131,7 +133,7 @@ export default {
 
 <style scoped>
 .mazemap {
-    height: 400px;
+    height: 80vh;
     width: 60%;
     border: 1px solid #000;
 }

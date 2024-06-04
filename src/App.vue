@@ -10,43 +10,44 @@
     </div>
 
     <!-- new task form -->
-    <!-- <div class="new-task-form">
+    <div class="new-task-form">
       <TaskForm />
-    </div> -->
+    </div>
 
     <!-- filter -->
     <nav class="filter">
-      <button @click="filter = 'all'">Animation</button>
-      <button @click="filter = 'favs'">Markers</button>
+      <button @click="filter = 'all'">All</button>
+      <button @click="filter = 'favs'">Favs</button>
     </nav>
 
-    <div class="" v-if="filter === 'all'">
-      <div>
+    <div class="task-list" v-if="filter === 'all'">
+      <!-- <div> -->
 
-        <AnimateMarker />
-      </div>
-      <!-- <p>You have {{ taskStore.totalCount }} tasks.</p>
-      <div v-for="task in taskStore.tasks">
+        <!-- <AnimateMarker /> -->
+      <!-- </div> -->
+      <p>You have {{ totalCount }} tasks.</p>
+      <div v-for="task in tasks">
         <TaskDetails :task="task" />
-      </div> -->
+      </div>
     </div>
 
-    <div class="" v-if="filter === 'favs'">
-      <div>
+    <div class="task-list" v-if="filter === 'favs'">
+      <!-- <div>
 
         <MapPage />
-      </div>
-      <!-- <p>You have {{ taskStore.favCount }} tasks.</p>
-      <div v-for="task in taskStore.favs">
-        <TaskDetails :task="task" />
       </div> -->
+      <p>You have {{ favCount }} tasks.</p>
+      <div v-for="task in favs">
+        <TaskDetails :task="task" />
+      </div>
     </div>
 
-
+    <button @click="taskStore.$reset">reset the state</button>
   </main>
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
 import { ref } from 'vue'
 import TaskDetails from './components/TaskDetails.vue'
 import TaskForm from './components/TaskForm.vue'
@@ -63,10 +64,15 @@ export default {
   setup() {
     const taskStore = useTaskStore()
 
+    const { tasks, loading, favs, totalCount, favCount } = storeToRefs(taskStore)
+
+    taskStore.getTasks()
+
     const filter = ref('all')
     return {
       taskStore,
-      filter
+      filter,
+      tasks, loading, favs, totalCount, favCount
     }
   }
 }

@@ -47,19 +47,22 @@ export default {
                     .showBearingHint()
                     .show();
 
-                function setNewPosition() {
+                function setNewPosition(marker) {
 
                     const [newLngLat, direction] = calcLinearLatLng(startLngLat, destLngLat, 5);
 
-                    blueDot.setLngLatAnimated(newLngLat);
+                    marker.setLngLatAnimated(newLngLat);
                     // blueDot.setLngLat(newLngLat, {animate: false});
                     if (direction) {
-                        blueDot.setBearing(60 + 180);
+                        marker.setBearing(60 + 180);
                     } else {
-                        blueDot.setBearing(60);
+                        marker.setBearing(60);
                     }
                     myMap.flyTo({
-                        zoom: mapZoom, center: newLngLat, duration: 400, easing: function (a) {
+                        zoom: mapZoom, 
+                        center: newLngLat, 
+                        duration: 400, 
+                        easing: function (a) {
                             return a;
                         }
                     });
@@ -70,10 +73,12 @@ export default {
                     blueDot.setAccuracy(accuracy);
                 }
 
-                setInterval(setNewPosition, 250);
-                setInterval(setNewAccuracy, 2000);
+                setInterval(() => {
+                    setNewPosition(blueDot)
+                }, 250);
+                // setInterval(setNewAccuracy, 2000);
 
-                setInterval(toggleZoomInOut, 5000);
+                // setInterval(toggleZoomInOut, 5000);
             });
 
             function toggleZoomInOut() {
